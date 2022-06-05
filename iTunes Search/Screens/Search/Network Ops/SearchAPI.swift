@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum SearchAPIMethod {
-  case getSearchResults
+  case getSearchResults(searchFilters: [String: Any])
 }
 
 struct SearchAPI {
@@ -43,9 +43,9 @@ extension SearchAPI: TargetType {
     params[Keys.itemLimit.rawValue] = Constants.requestItemLimit
     
     switch apiMethod {
-    case .getSearchResults:
-      params[Keys.searchTerms.rawValue] = "leonardo dicaprio"
-      params["media"] = "movie"
+    case .getSearchResults(let searchFilters):
+      params[Keys.searchText.rawValue] = searchFilters[Keys.searchText.rawValue]
+      params[Keys.searchCategory.rawValue] = searchFilters[Keys.searchCategory.rawValue]
       return .requestParameters(parameters: params, encoding: URLEncoding.default)
     }
   }
@@ -58,9 +58,9 @@ extension SearchAPI: TargetType {
 extension SearchAPI {
   private enum Keys: String {
     case searchRegion = "country"
-    case searchTerms = "term"
+    case searchText = "term"
+    case searchCategory = "media"
     case itemLimit = "limit"
-    
   }
 }
 

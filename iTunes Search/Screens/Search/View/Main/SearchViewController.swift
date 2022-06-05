@@ -12,9 +12,10 @@ class SearchViewController: UIViewController {
   var manager: SearchManagerProtocol
   let searchController = UISearchController()
   
-  private let collectionView: UICollectionView = {
+  let collectionView: UICollectionView = {
     let viewLayout = UICollectionViewFlowLayout()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
+    collectionView.alwaysBounceVertical = true
     return collectionView
   }()
   
@@ -29,35 +30,10 @@ class SearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .systemPink
-    navigationItem.title = "iTunes Search"
-    navigationItem.searchController = searchController
-    navigationController?.navigationBar.prefersLargeTitles = true
-    
-    searchController.searchResultsUpdater = self
-    searchController.searchBar.scopeButtonTitles = ["Movies", "Music", "Apps", "Books"]
-    
+    setupView()
+    setupSearchController()
     setupCollectionView()
-    
-    manager.viewModel.dataUpdated = dataUpdated()
-    
-    manager.pageProvider.requestPage(for: .initial)
-  }
-  
-  private func setupCollectionView() {
-    view.addSubview(collectionView)
-    collectionView.backgroundColor = .systemBackground
-    collectionView.delegate = self
-    collectionView.dataSource = manager.dataSource
-    
-    collectionView.register(UINib(nibName: "SearchResultsCell", bundle: nil), forCellWithReuseIdentifier: "SearchResultsCell")
-    
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-    
-    NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-                                 collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                                 collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-                                 collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)])
+    setupBindings()
   }
 }
 
@@ -74,19 +50,28 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
 extension SearchViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
-    print("hiiii")
+    guard let text = searchController.searchBar.text else { return }
+    if text.count > 1 {
+      print(searchController.searchBar.selectedScopeButtonIndex)
+      manager.viewModel.searchFilters["media"] = getSelectedScope()
+      manager.viewModel.searchFilters["term"] = text
+      manager.pageProvider.requestPage(for: .initial)
+    }
   }
-}
-
-extension SearchViewController {
-  func dataUpdated() -> VoidHandler {
-    return { [weak self] in
-      DispatchQueue.main.async {
-        guard let self = self else { return }
-        self.collectionView.reloadData()
-      }
+  
+  private func getSelectedScope() -> String {
+    switch searchController.searchBar.selectedScopeButtonIndex {
+    case 0:
+      return SearchScope.movies.rawValue
+    case 1:
+      return SearchScope.books.rawValue
+    case 2:
+      return SearchScope.apps.rawValue
+    case 3:
+      return SearchScope.music.rawValue
+    default:
+      return "all"
     }
   }
 }
-
 

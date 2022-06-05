@@ -51,11 +51,11 @@ class SearchPageProvider: SearchPageProviderProtocol {
               completion(isSuccess)
             }
           } catch let error {
-            print(error.localizedDescription)
+            print(error)
             completion(false)
           }
         case .failure(let error):
-          print(error.localizedDescription)
+          print(error)
           completion(false)
         }
       }
@@ -77,6 +77,6 @@ class SearchPageProvider: SearchPageProviderProtocol {
   }
   
   private func getAPIMethod() -> SearchAPIMethod? {
-    return SearchAPIMethod.getSearchResults
+    return SearchAPIMethod.getSearchResults(searchFilters: viewModel.searchFilters)
   }
 }

@@ -22,12 +22,16 @@ class SearchResultsParser: SearchResultsParserProtocol {
   
   private func createResultCellViewModel(from resultItem: SearchItem) throws -> SearchCellBaseViewModelProtocol {
     let titleText = resultItem.trackName
-    let priceText = resultItem.trackPrice
     let releaseText = resultItem.releaseDate.getReadableDateFromISO8601(dateStyle: .medium, timeStyle: .none)
     
     let imageURL = resultItem.artworkUrl100
     let largerImageURL = String(imageURL.dropLast(13) + "200x200bb.jpg")
     
-    return SearchResultCellViewModel(titleText: titleText, releaseText: releaseText, priceText: "$\(priceText)", imageURL: largerImageURL)
+    var priceText = ""
+    if let trackPrice = resultItem.trackPrice { priceText = "$\(trackPrice)" }
+    if let appPrice = resultItem.price { priceText = "$\(appPrice)" }
+    if let formattedPrice = resultItem.formattedPrice { priceText = formattedPrice }
+    
+    return SearchResultCellViewModel(titleText: titleText, releaseText: releaseText, priceText: priceText, imageURL: largerImageURL)
   }
 }
