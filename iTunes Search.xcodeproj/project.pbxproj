@@ -33,6 +33,8 @@
 		BF3ED78F284CBD8A00E9C0AC /* SearchCellBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED78E284CBD8A00E9C0AC /* SearchCellBaseViewModel.swift */; };
 		BF3ED791284CBDAF00E9C0AC /* SearchResultCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED790284CBDAF00E9C0AC /* SearchResultCellViewModel.swift */; };
 		BF3ED793284CBDC000E9C0AC /* SearchPlaceholderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED792284CBDC000E9C0AC /* SearchPlaceholderCellViewModel.swift */; };
+		BF3ED796284CC22300E9C0AC /* SearchCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED795284CC22300E9C0AC /* SearchCellType.swift */; };
+		BF3ED7A0284D279500E9C0AC /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED79F284D279500E9C0AC /* String+Ext.swift */; };
 		DF74B0A772E80BFFF501CBD1 /* Pods_iTunes_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FAC78D2DA735F2B957E054 /* Pods_iTunes_Search.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		BF3ED78E284CBD8A00E9C0AC /* SearchCellBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellBaseViewModel.swift; sourceTree = "<group>"; };
 		BF3ED790284CBDAF00E9C0AC /* SearchResultCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCellViewModel.swift; sourceTree = "<group>"; };
 		BF3ED792284CBDC000E9C0AC /* SearchPlaceholderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderCellViewModel.swift; sourceTree = "<group>"; };
+		BF3ED795284CC22300E9C0AC /* SearchCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellType.swift; sourceTree = "<group>"; };
+		BF3ED79F284D279500E9C0AC /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		C1FAC78D2DA735F2B957E054 /* Pods_iTunes_Search.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunes_Search.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -163,6 +167,7 @@
 		BF3ED755284B944700E9C0AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF3ED794284CC21300E9C0AC /* General */,
 				BF3ED767284BBA3800E9C0AC /* SearchResponseModel.swift */,
 				BF3ED769284BC5C500E9C0AC /* SearchItem.swift */,
 			);
@@ -223,6 +228,7 @@
 				BF3ED781284BF8C700E9C0AC /* ViewControllerMaker.swift */,
 				BF3ED763284BA49300E9C0AC /* Constants.swift */,
 				BF3ED76C284BC77200E9C0AC /* Typealiases.swift */,
+				BF3ED79F284D279500E9C0AC /* String+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -285,6 +291,14 @@
 				BF3ED779284BEE2900E9C0AC /* SearchResultsParser.swift */,
 			);
 			path = Parsers;
+			sourceTree = "<group>";
+		};
+		BF3ED794284CC21300E9C0AC /* General */ = {
+			isa = PBXGroup;
+			children = (
+				BF3ED795284CC22300E9C0AC /* SearchCellType.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +423,7 @@
 				BF3ED760284BA36600E9C0AC /* SearchAPI.swift in Sources */,
 				BF3ED780284BF11E00E9C0AC /* SearchDataSource.swift in Sources */,
 				BF3ED793284CBDC000E9C0AC /* SearchPlaceholderCellViewModel.swift in Sources */,
+				BF3ED796284CC22300E9C0AC /* SearchCellType.swift in Sources */,
 				BF3ED775284BECC500E9C0AC /* SearchViewModel.swift in Sources */,
 				BF3ED78F284CBD8A00E9C0AC /* SearchCellBaseViewModel.swift in Sources */,
 				BF3ED73B284B5B9F00E9C0AC /* SearchViewController.swift in Sources */,
@@ -419,6 +434,7 @@
 				BF3ED788284C180E00E9C0AC /* SearchResultsCell.swift in Sources */,
 				BF3ED768284BBA3800E9C0AC /* SearchResponseModel.swift in Sources */,
 				BF3ED762284BA37200E9C0AC /* SearchAPIProvider.swift in Sources */,
+				BF3ED7A0284D279500E9C0AC /* String+Ext.swift in Sources */,
 				BF3ED78B284CBCF100E9C0AC /* SearchBaseCollectionViewCell.swift in Sources */,
 				BF3ED77A284BEE2900E9C0AC /* SearchResultsParser.swift in Sources */,
 				BF3ED766284BB98B00E9C0AC /* SearchPageProvider.swift in Sources */,

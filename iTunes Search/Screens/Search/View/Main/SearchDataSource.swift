@@ -8,17 +8,24 @@
 import UIKit
 
 class SearchDataSource: NSObject, UICollectionViewDataSource {
+  let viewModel: SearchViewModelProtocol
+  
+  init(viewModel: SearchViewModelProtocol) {
+    self.viewModel = viewModel
+  }
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    50
+    viewModel.cellViewModels.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchResultsCell", for: indexPath) as? SearchResultsCell else {
+    let cellViewModel = viewModel.cellViewModels[indexPath.row]
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellViewModel.cellType.identifier, for: indexPath) as? SearchResultsCell else {
       print("error while dequeing cell")
       fatalError()
     }
-    cell.contentView.backgroundColor = .systemBrown
-    cell.contentView.layer.cornerRadius = 10
+    cell.viewModel = cellViewModel
+    cell.configureCell()
     return cell
   }
 }

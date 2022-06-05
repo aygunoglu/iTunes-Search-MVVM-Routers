@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+protocol SearchPlaceholderCellViewModelProtocol: SearchCellBaseViewModelProtocol {
+  
+}
+
+class SearchPlaceholderCellViewModel: SearchCellBaseViewModel, SearchPlaceholderCellViewModelProtocol {
+  
+}

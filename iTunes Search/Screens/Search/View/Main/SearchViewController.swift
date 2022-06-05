@@ -9,7 +9,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
   
-  let manager: SearchManagerProtocol
+  var manager: SearchManagerProtocol
   let searchController = UISearchController()
   
   private let collectionView: UICollectionView = {
@@ -39,8 +39,9 @@ class SearchViewController: UIViewController {
     
     setupCollectionView()
     
-    manager.pageProvider.requestPage(for: .initial)
+    manager.viewModel.dataUpdated = dataUpdated()
     
+    manager.pageProvider.requestPage(for: .initial)
   }
   
   private func setupCollectionView() {
@@ -49,7 +50,7 @@ class SearchViewController: UIViewController {
     collectionView.delegate = self
     collectionView.dataSource = manager.dataSource
     
-    collectionView.register(SearchResultsCell.self, forCellWithReuseIdentifier: "SearchResultsCell")
+    collectionView.register(UINib(nibName: "SearchResultsCell", bundle: nil), forCellWithReuseIdentifier: "SearchResultsCell")
     
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -62,18 +63,29 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+    return UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 10)
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = (view.frame.width - 30) / 2
-    return CGSize(width: width, height: 200)
+    return CGSize(width: width, height: 296)
   }
 }
 
 extension SearchViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     print("hiiii")
+  }
+}
+
+extension SearchViewController {
+  func dataUpdated() -> VoidHandler {
+    return { [weak self] in
+      DispatchQueue.main.async {
+        guard let self = self else { return }
+        self.collectionView.reloadData()
+      }
+    }
   }
 }
 

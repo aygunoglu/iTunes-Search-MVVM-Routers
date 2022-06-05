@@ -6,12 +6,27 @@
 //
 
 import UIKit
+import Kingfisher
 
-class SearchResultsCell: UICollectionViewCell {
+class SearchResultsCell: SearchBaseCollectionViewCell {
+  @IBOutlet weak var containerView: UIView!
+  @IBOutlet weak var imageView: UIImageView!
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var releaseLabel: UILabel!
+  @IBOutlet weak var priceLabel: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
+  }
+  
+  func configureCell() {
+    guard let viewModel = viewModel as? SearchResultCellViewModelProtocol else { return }
+    containerView.backgroundColor = viewModel.backgroundColor
+    titleLabel.text = viewModel.titleText
+    priceLabel.text = viewModel.priceText
+    releaseLabel.text = viewModel.releaseText
+    
+    imageView.kf.setImage(with: URL(string: viewModel.imageURL))
   }
   
 }

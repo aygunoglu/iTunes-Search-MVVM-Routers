@@ -8,9 +8,9 @@
 import Foundation
 
 protocol SearchCellBaseViewModelProtocol {
-  
+  var cellType: SearchCellType { get }
 }
 
 class SearchCellBaseViewModel: SearchCellBaseViewModelProtocol {
-  
+  var cellType: SearchCellType = .resultsCell
 }

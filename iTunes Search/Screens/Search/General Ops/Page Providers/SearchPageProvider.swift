@@ -13,9 +13,12 @@ protocol SearchPageProviderProtocol {
 
 class SearchPageProvider: SearchPageProviderProtocol {
   let operationQueue = OperationQueue()
+  var viewModel: SearchViewModelProtocol
+  var parser: SearchResultsParserProtocol
   
-  init() {
-    
+  init(viewModel: SearchViewModelProtocol, parser: SearchResultsParserProtocol) {
+    self.viewModel = viewModel
+    self.parser = parser
   }
   
   func requestPage(for paginationType: PaginationType) {
@@ -60,10 +63,14 @@ class SearchPageProvider: SearchPageProviderProtocol {
   }
   
   private func handleResult(for paginationType: PaginationType, _ responseModel: SearchResponseModel, _ completion: CompletionHandler) {
-    print(responseModel)
     switch paginationType {
     case .initial:
-      print("initial page requested")
+      do {
+        viewModel.cellViewModels = try parser.parseDataSource(from: responseModel, paginationType: .initial)
+        viewModel.dataUpdated?()
+      } catch {
+        completion(false)
+      }
     case .next:
       print("next page requested")
     }
