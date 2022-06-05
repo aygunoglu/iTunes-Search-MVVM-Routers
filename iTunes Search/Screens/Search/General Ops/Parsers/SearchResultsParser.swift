@@ -17,6 +17,9 @@ class SearchResultsParser: SearchResultsParserProtocol {
     try responseModel.results.forEach { resultItem in
       parsedViewModels.append(try createResultCellViewModel(from: resultItem))
     }
+    if responseModel.resultCount == 20 {
+      parsedViewModels.append(createPlaceholderCellViewModel())
+    }
     return parsedViewModels
   }
   
@@ -33,5 +36,11 @@ class SearchResultsParser: SearchResultsParserProtocol {
     if let formattedPrice = resultItem.formattedPrice { priceText = formattedPrice }
     
     return SearchResultCellViewModel(titleText: titleText, releaseText: releaseText, priceText: priceText, imageURL: largerImageURL)
+  }
+  
+  private func createPlaceholderCellViewModel() -> SearchPlaceholderCellViewModelProtocol {
+    let placeholderCellViewModel = SearchPlaceholderCellViewModel()
+    placeholderCellViewModel.cellType = .placeholderCell
+    return placeholderCellViewModel
   }
 }

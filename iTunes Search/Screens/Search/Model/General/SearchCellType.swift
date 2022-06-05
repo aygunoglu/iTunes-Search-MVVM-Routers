@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SearchCellType {
+enum SearchCellType: CaseIterable {
   case resultsCell
   case placeholderCell
   

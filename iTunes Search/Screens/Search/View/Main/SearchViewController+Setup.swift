@@ -8,7 +8,7 @@
 import UIKit
 
 extension SearchViewController {
-  final func setupView() {
+  final func setupGeneralView() {
     view.backgroundColor = .systemPink
     navigationItem.title = Constants.searchVCNavigationTitle
     navigationController?.navigationBar.prefersLargeTitles = true
@@ -27,14 +27,16 @@ extension SearchViewController {
     self.collectionView.delegate = self
     self.collectionView.dataSource = self.manager.dataSource
     
-    self.collectionView.register(UINib(nibName: "SearchResultsCell", bundle: nil), forCellWithReuseIdentifier: "SearchResultsCell")
-    
     self.collectionView.translatesAutoresizingMaskIntoConstraints = false
     
     NSLayoutConstraint.activate([self.collectionView.topAnchor.constraint(equalTo: view.topAnchor),
                                  self.collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                                  self.collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
                                  self.collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)])
+    
+    SearchCellType.allCases.forEach { cellType in
+      self.collectionView.register(UINib(nibName: cellType.identifier, bundle: nil), forCellWithReuseIdentifier: cellType.identifier)
+    }
   }
   
   final func setupBindings() {

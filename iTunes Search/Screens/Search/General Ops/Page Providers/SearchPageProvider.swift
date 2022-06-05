@@ -15,6 +15,7 @@ class SearchPageProvider: SearchPageProviderProtocol {
   let operationQueue = OperationQueue()
   var viewModel: SearchViewModelProtocol
   var parser: SearchResultsParserProtocol
+  var requestOffset = 0
   
   init(viewModel: SearchViewModelProtocol, parser: SearchResultsParserProtocol) {
     self.viewModel = viewModel
@@ -37,7 +38,8 @@ class SearchPageProvider: SearchPageProviderProtocol {
   }
   
   private func sendRequest(for paginationType: PaginationType, _ completion: @escaping CompletionHandler) {
-    guard let apiMethod = getAPIMethod() else { return }
+    let offset = getOffsetInfo(paginationType: paginationType)
+    guard let apiMethod = getAPIMethod(offset: offset) else { return }
     let target = SearchAPI(apiMethod: apiMethod)
     
     SearchAPIProvider.apiProvider.request(target) { [weak self] result in
@@ -63,20 +65,41 @@ class SearchPageProvider: SearchPageProviderProtocol {
   }
   
   private func handleResult(for paginationType: PaginationType, _ responseModel: SearchResponseModel, _ completion: CompletionHandler) {
+    print(requestOffset)
     switch paginationType {
     case .initial:
       do {
         viewModel.cellViewModels = try parser.parseDataSource(from: responseModel, paginationType: .initial)
         viewModel.dataUpdated?()
+        requestOffset = 0
       } catch {
         completion(false)
       }
     case .next:
+      do {
+        viewModel.cellViewModels.removeLast()
+        
+        let newPageViewModels = try parser.parseDataSource(from: responseModel, paginationType: .initial)
+        viewModel.cellViewModels.append(contentsOf: newPageViewModels)
+        viewModel.dataUpdated?()
+      } catch {
+        completion(false)
+      }
       print("next page requested")
     }
   }
   
-  private func getAPIMethod() -> SearchAPIMethod? {
-    return SearchAPIMethod.getSearchResults(searchFilters: viewModel.searchFilters)
+  private func getOffsetInfo(paginationType: PaginationType) -> Int {
+    switch paginationType {
+    case .initial:
+      requestOffset = 0
+    case .next:
+      requestOffset += 20
+    }
+    return requestOffset
+  }
+  
+  private func getAPIMethod(offset: Int) -> SearchAPIMethod? {
+    return SearchAPIMethod.getSearchResults(offset: offset, searchFilters: viewModel.searchFilters)
   }
 }

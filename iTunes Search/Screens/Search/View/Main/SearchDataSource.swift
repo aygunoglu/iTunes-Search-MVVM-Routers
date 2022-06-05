@@ -9,22 +9,26 @@ import UIKit
 
 class SearchDataSource: NSObject, UICollectionViewDataSource {
   let viewModel: SearchViewModelProtocol
+  let actionHandler: SearchActionHandlerProtocol
   
-  init(viewModel: SearchViewModelProtocol) {
+  init(viewModel: SearchViewModelProtocol, actionHandler: SearchActionHandlerProtocol) {
     self.viewModel = viewModel
+    self.actionHandler = actionHandler
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    viewModel.cellViewModels.count
+    //print(viewModel.cellViewModels.count)
+    return viewModel.cellViewModels.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cellViewModel = viewModel.cellViewModels[indexPath.row]
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellViewModel.cellType.identifier, for: indexPath) as? SearchResultsCell else {
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellViewModel.cellType.identifier, for: indexPath) as? SearchBaseCollectionViewCell else {
       print("error while dequeing cell")
       fatalError()
     }
     cell.viewModel = cellViewModel
+    cell.actionHandler = actionHandler
     cell.configureCell()
     return cell
   }

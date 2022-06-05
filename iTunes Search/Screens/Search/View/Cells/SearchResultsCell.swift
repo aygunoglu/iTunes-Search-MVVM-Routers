@@ -19,7 +19,7 @@ class SearchResultsCell: SearchBaseCollectionViewCell {
     super.awakeFromNib()
   }
   
-  func configureCell() {
+  override func configureCell() {
     guard let viewModel = viewModel as? SearchResultCellViewModelProtocol else { return }
     containerView.backgroundColor = viewModel.backgroundColor
     titleLabel.text = viewModel.titleText
@@ -28,5 +28,4 @@ class SearchResultsCell: SearchBaseCollectionViewCell {
     
     imageView.kf.setImage(with: URL(string: viewModel.imageURL))
   }
-  
 }

@@ -16,4 +16,8 @@ class SearchBaseCollectionViewCell: UICollectionViewCell {
     super.awakeFromNib()
     layer.cornerRadius = 10
   }
+  
+  func configureCell() {}
+  
+  func willDisplay() {}
 }

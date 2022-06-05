@@ -13,6 +13,7 @@ protocol SearchManagerProtocol {
   var dataSource: SearchDataSource { get set }
   var router: SearchRouterProtocol { get set }
   var pageProvider: SearchPageProviderProtocol { get set }
+  var actionHandler: SearchActionHandlerProtocol { get set }
 }
 
 class SearchManager: SearchManagerProtocol {
@@ -25,7 +26,7 @@ class SearchManager: SearchManagerProtocol {
   }()
   
   lazy var dataSource: SearchDataSource = {
-    return SearchDataSource(viewModel: viewModel)
+    return SearchDataSource(viewModel: viewModel, actionHandler: actionHandler)
   }()
   
   lazy var router: SearchRouterProtocol = {
@@ -34,5 +35,9 @@ class SearchManager: SearchManagerProtocol {
   
   lazy var pageProvider: SearchPageProviderProtocol = {
     return SearchPageProvider(viewModel: viewModel, parser: resultsParser)
+  }()
+  
+  lazy var actionHandler: SearchActionHandlerProtocol = {
+    return SearchActionHandler(pageProvider: pageProvider, router: router, viewModel: viewModel)
   }()
 }

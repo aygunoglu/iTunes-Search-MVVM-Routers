@@ -30,7 +30,7 @@ class SearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupView()
+    setupGeneralView()
     setupSearchController()
     setupCollectionView()
     setupBindings()
@@ -46,6 +46,11 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     let width = (view.frame.width - 30) / 2
     return CGSize(width: width, height: 296)
   }
+  
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    let cell = cell as? SearchBaseCollectionViewCell
+    cell?.willDisplay()
+  }
 }
 
 extension SearchViewController: UISearchResultsUpdating {
@@ -53,8 +58,8 @@ extension SearchViewController: UISearchResultsUpdating {
     guard let text = searchController.searchBar.text else { return }
     if text.count > 1 {
       print(searchController.searchBar.selectedScopeButtonIndex)
-      manager.viewModel.searchFilters["media"] = getSelectedScope()
       manager.viewModel.searchFilters["term"] = text
+      manager.viewModel.searchFilters["media"] = getSelectedScope()
       manager.pageProvider.requestPage(for: .initial)
     }
   }

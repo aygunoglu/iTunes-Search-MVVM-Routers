@@ -38,6 +38,9 @@
 		BF3ED7A2284D370800E9C0AC /* SearchScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED7A1284D370800E9C0AC /* SearchScope.swift */; };
 		BF3ED7A4284D490D00E9C0AC /* SearchViewController+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED7A3284D490D00E9C0AC /* SearchViewController+Setup.swift */; };
 		BF3ED7A6284D4B2C00E9C0AC /* SearchViewController+Bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED7A5284D4B2C00E9C0AC /* SearchViewController+Bindings.swift */; };
+		BF3ED7AB284D4E9900E9C0AC /* SearchPlaceholderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED7A9284D4E9900E9C0AC /* SearchPlaceholderCell.swift */; };
+		BF3ED7AC284D4E9900E9C0AC /* SearchPlaceholderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF3ED7AA284D4E9900E9C0AC /* SearchPlaceholderCell.xib */; };
+		BFE32660284D5A800032A4A1 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3265F284D5A800032A4A1 /* UIView+Ext.swift */; };
 		DF74B0A772E80BFFF501CBD1 /* Pods_iTunes_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FAC78D2DA735F2B957E054 /* Pods_iTunes_Search.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +80,9 @@
 		BF3ED7A1284D370800E9C0AC /* SearchScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScope.swift; sourceTree = "<group>"; };
 		BF3ED7A3284D490D00E9C0AC /* SearchViewController+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+Setup.swift"; sourceTree = "<group>"; };
 		BF3ED7A5284D4B2C00E9C0AC /* SearchViewController+Bindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+Bindings.swift"; sourceTree = "<group>"; };
+		BF3ED7A9284D4E9900E9C0AC /* SearchPlaceholderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderCell.swift; sourceTree = "<group>"; };
+		BF3ED7AA284D4E9900E9C0AC /* SearchPlaceholderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPlaceholderCell.xib; sourceTree = "<group>"; };
+		BFE3265F284D5A800032A4A1 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		C1FAC78D2DA735F2B957E054 /* Pods_iTunes_Search.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunes_Search.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -235,6 +241,7 @@
 				BF3ED763284BA49300E9C0AC /* Constants.swift */,
 				BF3ED76C284BC77200E9C0AC /* Typealiases.swift */,
 				BF3ED79F284D279500E9C0AC /* String+Ext.swift */,
+				BFE3265F284D5A800032A4A1 /* UIView+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -253,9 +260,11 @@
 		BF3ED771284BEC7F00E9C0AC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BF3ED78A284CBCF100E9C0AC /* SearchBaseCollectionViewCell.swift */,
 				BF3ED786284C180E00E9C0AC /* SearchResultsCell.swift */,
 				BF3ED787284C180E00E9C0AC /* SearchResultsCell.xib */,
-				BF3ED78A284CBCF100E9C0AC /* SearchBaseCollectionViewCell.swift */,
+				BF3ED7A9284D4E9900E9C0AC /* SearchPlaceholderCell.swift */,
+				BF3ED7AA284D4E9900E9C0AC /* SearchPlaceholderCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -373,6 +382,7 @@
 				BF3ED743284B5BA000E9C0AC /* LaunchScreen.storyboard in Resources */,
 				BF3ED789284C180E00E9C0AC /* SearchResultsCell.xib in Resources */,
 				BF3ED740284B5BA000E9C0AC /* Assets.xcassets in Resources */,
+				BF3ED7AC284D4E9900E9C0AC /* SearchPlaceholderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +437,7 @@
 			files = (
 				BF3ED76D284BC77200E9C0AC /* Typealiases.swift in Sources */,
 				BF3ED7A4284D490D00E9C0AC /* SearchViewController+Setup.swift in Sources */,
+				BFE32660284D5A800032A4A1 /* UIView+Ext.swift in Sources */,
 				BF3ED76A284BC5C500E9C0AC /* SearchItem.swift in Sources */,
 				BF3ED778284BED1A00E9C0AC /* SearchRouter.swift in Sources */,
 				BF3ED764284BA49300E9C0AC /* Constants.swift in Sources */,
@@ -440,6 +451,7 @@
 				BF3ED7A6284D4B2C00E9C0AC /* SearchViewController+Bindings.swift in Sources */,
 				BF3ED791284CBDAF00E9C0AC /* SearchResultCellViewModel.swift in Sources */,
 				BF3ED785284BFDA000E9C0AC /* PaginationType.swift in Sources */,
+				BF3ED7AB284D4E9900E9C0AC /* SearchPlaceholderCell.swift in Sources */,
 				BF3ED737284B5B9F00E9C0AC /* AppDelegate.swift in Sources */,
 				BF3ED7A2284D370800E9C0AC /* SearchScope.swift in Sources */,
 				BF3ED782284BF8C700E9C0AC /* ViewControllerMaker.swift in Sources */,
