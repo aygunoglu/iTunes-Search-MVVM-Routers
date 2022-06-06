@@ -25,6 +25,7 @@ extension SearchViewController {
     view.addSubview(self.collectionView)
     self.collectionView.backgroundColor = .systemBackground
     self.collectionView.keyboardDismissMode = .onDrag
+    self.collectionView.allowsMultipleSelection = false
     
     self.collectionView.delegate = self
     self.collectionView.dataSource = self.manager.dataSource
@@ -35,6 +36,8 @@ extension SearchViewController {
                                  self.collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                                  self.collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
                                  self.collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)])
+    
+    self.collectionView.setEmptyMessage(Constants.emptyStateMessage)
     
     SearchCellType.allCases.forEach { cellType in
       self.collectionView.register(UINib(nibName: cellType.identifier, bundle: nil), forCellWithReuseIdentifier: cellType.identifier)

@@ -57,9 +57,8 @@ extension SearchViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     guard let text = searchController.searchBar.text else { return }
     if text.count > 1 {
-      print(searchController.searchBar.selectedScopeButtonIndex)
-      manager.viewModel.searchFilters["term"] = text
-      manager.viewModel.searchFilters["media"] = getSelectedScope()
+      manager.viewModel.searchFilters[Constants.textFilterParamName] = text
+      manager.viewModel.searchFilters[Constants.scopeFilterParamName] = getSelectedScope()
       manager.pageProvider.requestPage(for: .initial)
     }
   }
@@ -71,7 +70,7 @@ extension SearchViewController: UISearchResultsUpdating {
     case 1:
       return SearchScope.books.rawValue
     case 2:
-      return SearchScope.apps.rawValue
+      return SearchScope.podcast.rawValue
     case 3:
       return SearchScope.music.rawValue
     default:

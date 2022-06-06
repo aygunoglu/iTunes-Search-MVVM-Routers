@@ -9,7 +9,7 @@ import Foundation
 
 protocol SearchActionHandlerProtocol {
   func loadNextPage()
-  func goToDetailVC()
+  func goToDetailVC(cellViewModel: SearchResultCellViewModelProtocol)
 }
 
 class SearchActionHandler: SearchActionHandlerProtocol {
@@ -27,7 +27,7 @@ class SearchActionHandler: SearchActionHandlerProtocol {
     pageProvider.requestPage(for: .next)
   }
   
-  func goToDetailVC() {
-    
+  func goToDetailVC(cellViewModel: SearchResultCellViewModelProtocol) {
+    self.router.goToDetailVC(cellViewModel: cellViewModel)
   }
 }

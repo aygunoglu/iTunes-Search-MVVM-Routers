@@ -65,7 +65,6 @@ class SearchPageProvider: SearchPageProviderProtocol {
   }
   
   private func handleResult(for paginationType: PaginationType, _ responseModel: SearchResponseModel, _ completion: CompletionHandler) {
-    print(requestOffset)
     switch paginationType {
     case .initial:
       do {
@@ -85,7 +84,6 @@ class SearchPageProvider: SearchPageProviderProtocol {
       } catch {
         completion(false)
       }
-      print("next page requested")
     }
   }
   

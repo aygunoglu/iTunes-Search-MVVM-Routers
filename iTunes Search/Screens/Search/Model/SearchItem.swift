@@ -35,6 +35,7 @@ struct SearchItem: Codable {
   let currency: String?
   let primaryGenreName: String?
   let contentAdvisoryRating: String?
+  let description: String?
   let shortDescription: String?
   let longDescription: String?
   let hasITunesExtras: Bool?
@@ -54,6 +55,6 @@ struct SearchItem: Codable {
     case collectionHDPrice = "collectionHdPrice"
     case trackHDPrice = "trackHdPrice"
     case trackHDRentalPrice = "trackHdRentalPrice"
-    case releaseDate, collectionExplicitness, trackExplicitness, discCount, discNumber, trackCount, trackNumber, trackTimeMillis, country, currency, primaryGenreName, contentAdvisoryRating, shortDescription, longDescription, hasITunesExtras
+    case releaseDate, collectionExplicitness, trackExplicitness, discCount, discNumber, trackCount, trackNumber, trackTimeMillis, country, currency, primaryGenreName, contentAdvisoryRating, description, shortDescription, longDescription, hasITunesExtras
   }
 }

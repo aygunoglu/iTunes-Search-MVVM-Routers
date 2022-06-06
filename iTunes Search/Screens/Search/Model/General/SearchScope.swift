@@ -10,7 +10,7 @@ import Foundation
 enum SearchScope: String, CaseIterable {
   case movies = "movie"
   case books = "ebook"
-  case apps = "software"
+  case podcast = "podcast"
   case music = "music"
   
   var displayName: String {
@@ -19,8 +19,8 @@ enum SearchScope: String, CaseIterable {
       return "Movies"
     case .books:
       return "Books"
-    case .apps:
-      return "Apps"
+    case .podcast:
+      return "Podcasts"
     case .music:
       return "Music"
     }

@@ -24,6 +24,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   private func getNavigationController() -> UINavigationController {
     let navController = UINavigationController(rootViewController: getRootViewController())
+    
+    let appearance = UINavigationBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.backgroundColor = .systemBackground
+    appearance.titleTextAttributes = [.font:
+    UIFont.boldSystemFont(ofSize: 20.0),
+                                  .foregroundColor: UIColor.label]
+
+    navController.navigationBar.tintColor = .label
+    navController.navigationBar.standardAppearance = appearance
+    navController.navigationBar.scrollEdgeAppearance = appearance
     return navController
   }
 

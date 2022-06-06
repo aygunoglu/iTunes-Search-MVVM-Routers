@@ -11,10 +11,18 @@ protocol SearchRouterProtocol {
   var pushViewController: ((_ viewController: UIViewController) -> Void)? { get set }
   var popViewController: VoidHandler? { get set }
   var popToViewController: VoidHandler? { get set }
+  
+  func goToDetailVC(cellViewModel: SearchResultCellViewModelProtocol)
 }
 
 class SearchRouter: SearchRouterProtocol {  
   var pushViewController: ((_ viewController: UIViewController) -> Void)?
   var popViewController: VoidHandler?
   var popToViewController: VoidHandler?
+  
+  func goToDetailVC(cellViewModel: SearchResultCellViewModelProtocol) {
+    let detailVC = DetailViewController()
+    detailVC.cellViewModel = cellViewModel
+    pushViewController?(detailVC)
+  }
 }

@@ -24,18 +24,23 @@ class SearchResultsParser: SearchResultsParserProtocol {
   }
   
   private func createResultCellViewModel(from resultItem: SearchItem) throws -> SearchCellBaseViewModelProtocol {
+    let contentKind = resultItem.kind.capitalized
     let titleText = resultItem.trackName
     let releaseText = resultItem.releaseDate.getReadableDateFromISO8601(dateStyle: .medium, timeStyle: .none)
     
     let imageURL = resultItem.artworkUrl100
-    let largerImageURL = String(imageURL.dropLast(13) + "200x200bb.jpg")
+    let largerImageURL = String(imageURL.dropLast(13) + "600x600bb.jpg")
     
-    var priceText = ""
-    if let trackPrice = resultItem.trackPrice { priceText = "$\(trackPrice)" }
-    if let appPrice = resultItem.price { priceText = "$\(appPrice)" }
-    if let formattedPrice = resultItem.formattedPrice { priceText = formattedPrice }
+    var priceDouble = 0.23
+    if let trackPrice = resultItem.trackPrice { priceDouble = trackPrice }
+    if let price = resultItem.price { priceDouble = price }
+    let priceText = priceDouble == 0.00 ? "Free" : "$\(priceDouble)"
     
-    return SearchResultCellViewModel(titleText: titleText, releaseText: releaseText, priceText: priceText, imageURL: largerImageURL)
+    var longDescription: String?
+    if let description  = resultItem.longDescription { longDescription = description }
+    if let description = resultItem.description { longDescription = description }
+    
+    return SearchResultCellViewModel(contentKind: contentKind, titleText: titleText, releaseText: releaseText, priceText: priceText, descriptionText: longDescription, imageURL: largerImageURL)
   }
   
   private func createPlaceholderCellViewModel() -> SearchPlaceholderCellViewModelProtocol {

@@ -21,6 +21,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrV-dY-1dr">
                         <rect key="frame" x="0.0" y="0.0" width="221" height="296"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcY-ow-FDs">
+                                <rect key="frame" x="0.0" y="0.0" width="221" height="296"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="cellTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="kIo-xe-YTT"/>
+                                </connections>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sampleImage" translatesAutoresizingMaskIntoConstraints="NO" id="uJz-py-XVx">
                                 <rect key="frame" x="0.0" y="0.0" width="221" height="237"/>
                                 <constraints>
@@ -48,12 +55,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="UcY-ow-FDs" firstAttribute="leading" secondItem="vrV-dY-1dr" secondAttribute="leading" id="2Qp-ng-EZe"/>
                             <constraint firstItem="uJz-py-XVx" firstAttribute="leading" secondItem="vrV-dY-1dr" secondAttribute="leading" id="4U1-KT-BNw"/>
                             <constraint firstAttribute="bottom" secondItem="TSS-DW-Aba" secondAttribute="bottom" constant="8" id="73B-DJ-Eod"/>
+                            <constraint firstItem="UcY-ow-FDs" firstAttribute="top" secondItem="vrV-dY-1dr" secondAttribute="top" id="81J-BQ-0nS"/>
                             <constraint firstAttribute="bottom" secondItem="0Lj-JI-OUQ" secondAttribute="bottom" constant="8" id="BvL-cX-8AU"/>
                             <constraint firstItem="bcW-qg-umq" firstAttribute="leading" secondItem="vrV-dY-1dr" secondAttribute="leading" constant="8" id="Dso-Ay-uYv"/>
                             <constraint firstAttribute="trailing" secondItem="uJz-py-XVx" secondAttribute="trailing" id="NDg-63-rNI"/>
                             <constraint firstItem="TSS-DW-Aba" firstAttribute="leading" secondItem="vrV-dY-1dr" secondAttribute="leading" constant="8" id="PfK-cp-lj7"/>
+                            <constraint firstAttribute="bottom" secondItem="UcY-ow-FDs" secondAttribute="bottom" id="Tdm-5C-1gm"/>
+                            <constraint firstAttribute="trailing" secondItem="UcY-ow-FDs" secondAttribute="trailing" id="W8o-Dc-MPF"/>
                             <constraint firstAttribute="trailing" secondItem="0Lj-JI-OUQ" secondAttribute="trailing" constant="8" id="WoB-zv-sm2"/>
                             <constraint firstItem="uJz-py-XVx" firstAttribute="top" secondItem="vrV-dY-1dr" secondAttribute="top" id="ar0-Lt-Yu5"/>
                             <constraint firstItem="bcW-qg-umq" firstAttribute="top" secondItem="uJz-py-XVx" secondAttribute="bottom" constant="8" id="b0p-gg-7cW"/>

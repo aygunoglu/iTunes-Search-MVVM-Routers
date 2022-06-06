@@ -23,7 +23,7 @@ extension SearchViewController {
     return { [weak self] in
       DispatchQueue.main.async {
         guard let self = self else { return }
-        self.collectionView.setEmptyMessage("No results.")
+        self.collectionView.setEmptyMessage(Constants.emptyStateMessage)
         self.collectionView.alwaysBounceVertical = false
         self.collectionView.reloadData()
       }

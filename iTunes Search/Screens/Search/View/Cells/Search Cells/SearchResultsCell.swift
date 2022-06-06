@@ -28,4 +28,9 @@ class SearchResultsCell: SearchBaseCollectionViewCell {
     
     imageView.kf.setImage(with: URL(string: viewModel.imageURL))
   }
+  
+  @IBAction func cellTapped(_ sender: UIButton) {
+    guard let viewModel = viewModel as? SearchResultCellViewModelProtocol else { return }
+    actionHandler.goToDetailVC(cellViewModel: viewModel)
+  }
 }
