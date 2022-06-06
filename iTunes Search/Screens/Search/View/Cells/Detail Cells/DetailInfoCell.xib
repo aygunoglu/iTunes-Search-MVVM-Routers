@@ -17,9 +17,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feature-Movie | May 21, 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-Fb-goh">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feature-Movie | May 21, 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-Fb-goh">
                         <rect key="frame" x="10" y="9" width="201" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -32,9 +31,11 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="gF4-Fb-goh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Ggw-cV-i8a"/>
                     <constraint firstAttribute="trailing" secondItem="syv-r3-OTe" secondAttribute="trailing" constant="10" id="WTN-Aw-Tfk"/>
                     <constraint firstAttribute="bottom" secondItem="syv-r3-OTe" secondAttribute="bottom" constant="9" id="XXe-S1-FGx"/>
                     <constraint firstItem="syv-r3-OTe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="Ykv-4Q-vMy"/>
+                    <constraint firstAttribute="bottom" secondItem="gF4-Fb-goh" secondAttribute="bottom" constant="8" id="fgE-Ir-tbz"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
