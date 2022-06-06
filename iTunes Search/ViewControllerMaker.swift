@@ -14,4 +14,8 @@ extension ViewControllerMaker {
     let manager = SearchManager()
     return SearchViewController(manager: manager)
   }
+  
+  static func searchDetailViewController(cellViewModel: SearchResultCellViewModelProtocol) -> DetailViewController {
+    return DetailViewController(cellViewModel: cellViewModel)
+  }
 }

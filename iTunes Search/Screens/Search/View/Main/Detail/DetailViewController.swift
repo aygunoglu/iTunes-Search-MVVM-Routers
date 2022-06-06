@@ -10,12 +10,26 @@ import UIKit
 class DetailViewController: UIViewController {
   
   var tableView: UITableView!
-  var cellViewModel: SearchResultCellViewModelProtocol?
+  var cellViewModel: SearchResultCellViewModelProtocol
+  
+  init(cellViewModel: SearchResultCellViewModelProtocol) {
+    self.cellViewModel = cellViewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    navigationItem.largeTitleDisplayMode = .never
+    setupGeneralView()
     setupTableView()
+  }
+  
+  func setupGeneralView() {
+    navigationItem.largeTitleDisplayMode = .never
+    navigationItem.title = Constants.detailVCNavigationTitle
   }
   
   func setupTableView() {
@@ -42,6 +56,7 @@ class DetailViewController: UIViewController {
   }
 }
 
+// MARK: TableView Delegates
 extension DetailViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableView.automaticDimension
@@ -52,6 +67,7 @@ extension DetailViewController: UITableViewDelegate {
   }
 }
 
+// MARK: Table View Data Source
 extension DetailViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     SearchDetailCellType.allCases.count
@@ -62,8 +78,6 @@ extension DetailViewController: UITableViewDataSource {
     guard let titleCell = tableView.dequeueReusableCell(withIdentifier: SearchDetailCellType.titleCell.identifier, for: indexPath) as? DetailTitleCell else { fatalError() }
     guard let infoCell = tableView.dequeueReusableCell(withIdentifier: SearchDetailCellType.infoCell.identifier, for: indexPath) as? DetailInfoCell else { fatalError() }
     guard let descriptionCell = tableView.dequeueReusableCell(withIdentifier: SearchDetailCellType.descriptionCell.identifier, for: indexPath) as? DetailDescriptionCell else { fatalError() }
-    
-    guard let cellViewModel = cellViewModel else { fatalError("cell view model found nil") }
     
     imageCell.configureCell(with: cellViewModel)
     titleCell.configureCell(with: cellViewModel)

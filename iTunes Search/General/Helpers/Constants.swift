@@ -15,9 +15,10 @@ struct Constants {
   static let requestItemLimit = 20
   
   static let searchVCNavigationTitle = "iTunes Search"
+  static let detailVCNavigationTitle = "Details"
   
   static let searchBarPlaceholderText = "Type at least two letters"
-  static let emptyStateMessage = "No Results."
+  static let emptyStateMessage = "No results."
   
   static let searchResultsCellIdentifier = "SearchResultsCell"
   static let searchPlaceholderCellIdentifier = "SearchPlaceholderCell"

@@ -232,8 +232,8 @@
 			children = (
 				BF3ED77E284BF0E700E9C0AC /* Parsers */,
 				BF3ED77D284BF0DE00E9C0AC /* Page Providers */,
-				BF3ED777284BED1A00E9C0AC /* SearchRouter.swift */,
 				BF3ED77B284BEE7200E9C0AC /* SearchManager.swift */,
+				BF3ED777284BED1A00E9C0AC /* SearchRouter.swift */,
 				BF3ED78C284CBD4C00E9C0AC /* SearchActionHandler.swift */,
 			);
 			path = "General Ops";
@@ -269,11 +269,11 @@
 		BF3ED770284BEC7600E9C0AC /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BF5898CE284E57B800FE6534 /* Detail */,
 				BF3ED73A284B5B9F00E9C0AC /* SearchViewController.swift */,
 				BF3ED77F284BF11E00E9C0AC /* SearchDataSource.swift */,
 				BF3ED7A3284D490D00E9C0AC /* SearchViewController+Setup.swift */,
 				BF3ED7A5284D4B2C00E9C0AC /* SearchViewController+Bindings.swift */,
+				BF5898CE284E57B800FE6534 /* Detail */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -281,8 +281,8 @@
 		BF3ED771284BEC7F00E9C0AC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				BF5898D2284E713000FE6534 /* Detail Cells */,
 				BF5898D1284E712400FE6534 /* Search Cells */,
+				BF5898D2284E713000FE6534 /* Detail Cells */,
 				BF3ED78A284CBCF100E9C0AC /* SearchBaseCollectionViewCell.swift */,
 			);
 			path = Cells;

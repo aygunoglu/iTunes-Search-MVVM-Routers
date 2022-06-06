@@ -21,8 +21,7 @@ class SearchRouter: SearchRouterProtocol {
   var popToViewController: VoidHandler?
   
   func goToDetailVC(cellViewModel: SearchResultCellViewModelProtocol) {
-    let detailVC = DetailViewController()
-    detailVC.cellViewModel = cellViewModel
+    let detailVC = ViewControllerMaker.searchDetailViewController(cellViewModel: cellViewModel)
     pushViewController?(detailVC)
   }
 }

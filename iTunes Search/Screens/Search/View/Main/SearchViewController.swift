@@ -37,6 +37,7 @@ class SearchViewController: UIViewController {
   }
 }
 
+// MARK: CollectionView Delegates
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 10)
@@ -53,6 +54,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
   }
 }
 
+// MARK: SearchViewController Updater
 extension SearchViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     guard let text = searchController.searchBar.text else { return }
