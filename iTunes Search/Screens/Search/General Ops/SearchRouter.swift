@@ -5,12 +5,16 @@
 //  Created by Hasan Aygünoglu on 4.06.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol SearchRouterProtocol {
-  
+  var pushViewController: ((_ viewController: UIViewController) -> Void)? { get set }
+  var popViewController: VoidHandler? { get set }
+  var popToViewController: VoidHandler? { get set }
 }
 
-class SearchRouter: SearchRouterProtocol {
-  
+class SearchRouter: SearchRouterProtocol {  
+  var pushViewController: ((_ viewController: UIViewController) -> Void)?
+  var popViewController: VoidHandler?
+  var popToViewController: VoidHandler?
 }

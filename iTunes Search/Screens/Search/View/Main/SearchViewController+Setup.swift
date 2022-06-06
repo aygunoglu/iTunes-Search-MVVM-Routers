@@ -24,6 +24,8 @@ extension SearchViewController {
   final func setupCollectionView() {
     view.addSubview(self.collectionView)
     self.collectionView.backgroundColor = .systemBackground
+    self.collectionView.keyboardDismissMode = .onDrag
+    
     self.collectionView.delegate = self
     self.collectionView.dataSource = self.manager.dataSource
     
@@ -42,5 +44,9 @@ extension SearchViewController {
   final func setupBindings() {
     self.manager.viewModel.dataUpdated = dataUpdated()
     self.manager.viewModel.showEmptyState = showEmptyState()
+    
+    self.manager.router.pushViewController = pushViewController()
+    self.manager.router.popViewController = popViewController()
+    self.manager.router.popToViewController = popToRootViewController()
   }
 }

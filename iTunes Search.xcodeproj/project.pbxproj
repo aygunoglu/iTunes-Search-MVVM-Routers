@@ -212,7 +212,6 @@
 			children = (
 				BF3ED77E284BF0E700E9C0AC /* Parsers */,
 				BF3ED77D284BF0DE00E9C0AC /* Page Providers */,
-				BF3ED776284BECF900E9C0AC /* Action Handlers */,
 				BF3ED777284BED1A00E9C0AC /* SearchRouter.swift */,
 				BF3ED77B284BEE7200E9C0AC /* SearchManager.swift */,
 				BF3ED78C284CBD4C00E9C0AC /* SearchActionHandler.swift */,
@@ -286,13 +285,6 @@
 				BF3ED78E284CBD8A00E9C0AC /* SearchCellBaseViewModel.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		BF3ED776284BECF900E9C0AC /* Action Handlers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Action Handlers";
 			sourceTree = "<group>";
 		};
 		BF3ED77D284BF0DE00E9C0AC /* Page Providers */ = {
