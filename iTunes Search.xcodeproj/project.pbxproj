@@ -40,6 +40,7 @@
 		BF3ED7A6284D4B2C00E9C0AC /* SearchViewController+Bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED7A5284D4B2C00E9C0AC /* SearchViewController+Bindings.swift */; };
 		BF3ED7AB284D4E9900E9C0AC /* SearchPlaceholderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ED7A9284D4E9900E9C0AC /* SearchPlaceholderCell.swift */; };
 		BF3ED7AC284D4E9900E9C0AC /* SearchPlaceholderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF3ED7AA284D4E9900E9C0AC /* SearchPlaceholderCell.xib */; };
+		BF5898C7284DB86700FE6534 /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5898C6284DB86700FE6534 /* UICollectionView+Ext.swift */; };
 		BFE32660284D5A800032A4A1 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3265F284D5A800032A4A1 /* UIView+Ext.swift */; };
 		DF74B0A772E80BFFF501CBD1 /* Pods_iTunes_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FAC78D2DA735F2B957E054 /* Pods_iTunes_Search.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		BF3ED7A5284D4B2C00E9C0AC /* SearchViewController+Bindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+Bindings.swift"; sourceTree = "<group>"; };
 		BF3ED7A9284D4E9900E9C0AC /* SearchPlaceholderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderCell.swift; sourceTree = "<group>"; };
 		BF3ED7AA284D4E9900E9C0AC /* SearchPlaceholderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPlaceholderCell.xib; sourceTree = "<group>"; };
+		BF5898C6284DB86700FE6534 /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		BFE3265F284D5A800032A4A1 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		C1FAC78D2DA735F2B957E054 /* Pods_iTunes_Search.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunes_Search.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				BF3ED752284B93F300E9C0AC /* General */,
+				BF3ED781284BF8C700E9C0AC /* ViewControllerMaker.swift */,
 				BF3ED751284B93ED00E9C0AC /* Screens */,
 				BF3ED736284B5B9F00E9C0AC /* AppDelegate.swift */,
 				BF3ED738284B5B9F00E9C0AC /* SceneDelegate.swift */,
@@ -237,11 +240,9 @@
 		BF3ED76B284BC75D00E9C0AC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				BF3ED781284BF8C700E9C0AC /* ViewControllerMaker.swift */,
+				BFE32661284D67960032A4A1 /* General Extensions */,
 				BF3ED763284BA49300E9C0AC /* Constants.swift */,
 				BF3ED76C284BC77200E9C0AC /* Typealiases.swift */,
-				BF3ED79F284D279500E9C0AC /* String+Ext.swift */,
-				BFE3265F284D5A800032A4A1 /* UIView+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -280,9 +281,9 @@
 		BF3ED773284BECB500E9C0AC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				BF3ED78E284CBD8A00E9C0AC /* SearchCellBaseViewModel.swift */,
 				BF3ED790284CBDAF00E9C0AC /* SearchResultCellViewModel.swift */,
 				BF3ED792284CBDC000E9C0AC /* SearchPlaceholderCellViewModel.swift */,
+				BF3ED78E284CBD8A00E9C0AC /* SearchCellBaseViewModel.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -317,6 +318,16 @@
 				BF3ED7A1284D370800E9C0AC /* SearchScope.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		BFE32661284D67960032A4A1 /* General Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BF3ED79F284D279500E9C0AC /* String+Ext.swift */,
+				BFE3265F284D5A800032A4A1 /* UIView+Ext.swift */,
+				BF5898C6284DB86700FE6534 /* UICollectionView+Ext.swift */,
+			);
+			path = "General Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,6 +468,7 @@
 				BF3ED782284BF8C700E9C0AC /* ViewControllerMaker.swift in Sources */,
 				BF3ED788284C180E00E9C0AC /* SearchResultsCell.swift in Sources */,
 				BF3ED768284BBA3800E9C0AC /* SearchResponseModel.swift in Sources */,
+				BF5898C7284DB86700FE6534 /* UICollectionView+Ext.swift in Sources */,
 				BF3ED762284BA37200E9C0AC /* SearchAPIProvider.swift in Sources */,
 				BF3ED7A0284D279500E9C0AC /* String+Ext.swift in Sources */,
 				BF3ED78B284CBCF100E9C0AC /* SearchBaseCollectionViewCell.swift in Sources */,

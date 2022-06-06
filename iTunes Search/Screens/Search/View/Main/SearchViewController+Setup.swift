@@ -41,5 +41,6 @@ extension SearchViewController {
   
   final func setupBindings() {
     self.manager.viewModel.dataUpdated = dataUpdated()
+    self.manager.viewModel.showEmptyState = showEmptyState()
   }
 }

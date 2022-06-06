@@ -69,9 +69,9 @@ class SearchPageProvider: SearchPageProviderProtocol {
     switch paginationType {
     case .initial:
       do {
-        viewModel.cellViewModels = try parser.parseDataSource(from: responseModel, paginationType: .initial)
-        viewModel.dataUpdated?()
         requestOffset = 0
+        viewModel.cellViewModels = try parser.parseDataSource(from: responseModel, paginationType: .initial)
+        if viewModel.cellViewModels.isEmpty { viewModel.showEmptyState?() } else { viewModel.dataUpdated?() }
       } catch {
         completion(false)
       }

@@ -12,6 +12,17 @@ extension SearchViewController {
     return { [weak self] in
       DispatchQueue.main.async {
         guard let self = self else { return }
+        self.collectionView.backgroundView = nil
+        self.collectionView.reloadData()
+      }
+    }
+  }
+  
+  final func showEmptyState() -> VoidHandler {
+    return { [weak self] in
+      DispatchQueue.main.async {
+        guard let self = self else { return }
+        self.collectionView.setEmptyMessage("No results.")
         self.collectionView.reloadData()
       }
     }

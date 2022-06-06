@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol SearchPlaceholderCellViewModelProtocol: SearchCellBaseViewModelProtocol {
-  
-}
+protocol SearchPlaceholderCellViewModelProtocol: SearchCellBaseViewModelProtocol {}
 
-class SearchPlaceholderCellViewModel: SearchCellBaseViewModel, SearchPlaceholderCellViewModelProtocol {
-  
-}
+class SearchPlaceholderCellViewModel: SearchCellBaseViewModel, SearchPlaceholderCellViewModelProtocol {}

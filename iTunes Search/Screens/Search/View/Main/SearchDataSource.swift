@@ -17,7 +17,6 @@ class SearchDataSource: NSObject, UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    //print(viewModel.cellViewModels.count)
     return viewModel.cellViewModels.count
   }
   
