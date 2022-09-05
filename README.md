@@ -1,5 +1,7 @@
 #  iTunes Search
 
+A small MVVM+Routers project with Apple's iTunes Search API. The API seems pretty outdated, the documentation does not include any info on how to handle pagination. But I've still managed to write an infinite scrolling implementation with what little information I've found. 
+
 ## Screens
 
 <p>
@@ -15,8 +17,4 @@
 ### [Moya](https://github.com/Moya/Moya)
 
 ### [Kingfisher](https://github.com/onevcat/Kingfisher)
-
-## Some notes on the app
-
-* The iTunes Search API documentation does not include any info on how to handle pagination. There's a "secret" offset parameter (can only be found through googling) that does let you offset the data, however, this does not work properly and causes dublicate item returns, which might be the reason why it's not documented. Though, despite the API problems, I've still written an Infinite scrolling implementation and it works with no issues. 
 
